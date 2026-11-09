@@ -12,3 +12,26 @@ class PlayerStats:
             key=lambda player: player.goals + player.assists,
             reverse=True,
         )
+
+    def top_scorers_by_team(self, team):
+        """Palauttaa joukkueen pelaajat pisteiden mukaan laskevassa järjestyksessä."""
+        players = [
+            player for player in self.players
+            if team in [player_team.strip() for player_team in player.team.split(",")]
+        ]
+        return sorted(
+            players,
+            key=lambda player: player.goals + player.assists,
+            reverse=True,
+        )
+
+    def top_goal_scorers(self, how_many):
+        """Palauttaa how_many eniten maaleja tehnyttä pelaajaa.
+
+        Pelaajat palautetaan maalimäärän mukaan laskevassa järjestyksessä.
+        """
+        return sorted(
+            self.players,
+            key=lambda player: player.goals,
+            reverse=True,
+        )[:how_many]

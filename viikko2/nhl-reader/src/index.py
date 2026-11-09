@@ -18,8 +18,8 @@ SEASONS = [
 ]
 
 
-def print_players(console, players, season, nationality):
-    table = Table(title=f"Season {season} players from {nationality}")
+def print_players(console, players, season, search_value):
+    table = Table(title=f"Season {season} players from {search_value}")
     table.add_column("Player")
     table.add_column("Teams")
     table.add_column("Goals", justify="right")
@@ -42,25 +42,34 @@ def print_players(console, players, season, nationality):
 def main():
     console = Console()
     console.print("[bold]NHL player statistics[/bold]")
-    season, nationality = ask_search_parameters(console)
-    players = find_players(season, nationality)
-    print_players(console, players, season, nationality)
+    season, search_type, search_value = ask_search_parameters(console)
+    players = find_players(season, search_type, search_value)
+    print_players(console, players, season, search_value)
 
 
 def ask_search_parameters(console):
     console.print("Available seasons:", ", ".join(SEASONS))
     season = Prompt.ask("Season", choices=SEASONS, default="2024-25")
-    nationality = Prompt.ask(
-        "Nationality (for example FIN, SWE or CAN)"
-    ).upper()
-    return season, nationality
+    search_type = Prompt.ask(
+        "Search by",
+        choices=["nationality", "team"],
+        default="nationality",
+    )
+    if search_type == "nationality":
+        prompt = "Nationality (for example FIN, SWE or CAN)"
+    else:
+        prompt = "Team (for example CAR, DAL or FLA)"
+    search_value = Prompt.ask(prompt).upper()
+    return season, search_type, search_value
 
 
-def find_players(season, nationality):
+def find_players(season, search_type, search_value):
     url = f"https://studies.cs.helsinki.fi/nhlstats/{season}/players"
     reader = PlayerReader(url)
     stats = PlayerStats(reader)
-    return stats.top_scorers_by_nationality(nationality)
+    if search_type == "team":
+        return stats.top_scorers_by_team(search_value)
+    return stats.top_scorers_by_nationality(search_value)
 
 
 if __name__ == "__main__":
