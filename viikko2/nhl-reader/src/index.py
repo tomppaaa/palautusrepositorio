@@ -42,18 +42,25 @@ def print_players(console, players, season, nationality):
 def main():
     console = Console()
     console.print("[bold]NHL player statistics[/bold]")
+    season, nationality = ask_search_parameters(console)
+    players = find_players(season, nationality)
+    print_players(console, players, season, nationality)
+
+
+def ask_search_parameters(console):
     console.print("Available seasons:", ", ".join(SEASONS))
     season = Prompt.ask("Season", choices=SEASONS, default="2024-25")
     nationality = Prompt.ask(
         "Nationality (for example FIN, SWE or CAN)"
     ).upper()
+    return season, nationality
 
+
+def find_players(season, nationality):
     url = f"https://studies.cs.helsinki.fi/nhlstats/{season}/players"
     reader = PlayerReader(url)
     stats = PlayerStats(reader)
-    players = stats.top_scorers_by_nationality(nationality)
-
-    print_players(console, players, season, nationality)
+    return stats.top_scorers_by_nationality(nationality)
 
 
 if __name__ == "__main__":
