@@ -2,12 +2,11 @@
 
 ## Koodin täydennykset
 
-Koodin täydennys auttoi aika paljon etenkin silloin, kun piti kirjoittaa samaa toistuvaa koodia, kuten pelaajien filtteröintiä ja järjestelyä. Homma sujui nopeammin, mutta ehdotukset oli silti pakko tarkistaa tarkkaan ennen kuin niitä löi lukkoon. Esim. metodin toimivuus kannattaa aina varmistaa suoraan docstringistä eikä vaa luottaa siihen, että tekoälyn ehdotus on heti valmista tavaraa.
+Koodin täydennys auttoi aika paljon etenkin silloin, kun piti kirjoittaa samaa toistuvaa koodia, kuten pelaajien filtteröintiä ja järjestelyä. Homma sujui nopeammin, mutta ehdotukset oli silti pakko tarkistaa tarkkaan ennen kuin niitä löi lukkoon. Esim. metodin toimivuus kannattaa aina varmistaa suoraan docstringistä eikä vaa luottaa siihen, että tekoälyn ehdotus on hyvä.
 
 ## Pylint-varoitus
 
-Copilotin selitys piti paikkansa. `os`-moduulia ei käytetty, joten Pylint
-antoi `unused-import`-varoituksen. Käyttämätön tuonti poistettiin.
+Copilotin selitys oli oikea. os-moduulia ei loppujen lopuksi käytetty missään, joten Pylint antoi siitä aiheellisen unused-import-varoituksen.
 
 ## Agentti ja testit
 
