@@ -1,0 +1,3 @@
+Toimiva daily scrum on rento tilanne, jossa kenenkään ei tarvitse pelätä syyttelyä, jos joku asia jumittaa. Kuten simulaatioissakin huomasi, avoimessa tiimissä apua saa heti eikä kenenkään tarvitse jäädä yksin tuskailemaan saman ongelman kanssa päiväkausiksi.
+
+Paljon ratkaisee myös se, miten itse tuo asiansa esiin. Turhan anteeksipyytelyn ja itsensä vähättelyn sijaan kannattaa sanoa suoraan, mikä on pielessä, ja pyytää apua suoraan vaikka nimeltä joltain tiimiläiseltä, joka vaikuttaa helposti lähestyttävältä. Hyvässä tiimissä ei jäädä etsimään syyllisiä myöhästyneille taskeille, vaan mietitään yhdessä, miten homma saadaan taas rullaamaan.
