@@ -8,15 +8,57 @@ Test Setup      Reset Application Create User And Go To Register Page
 
 Register With Valid Username And Password
     Set Username  mikko
-    Set Password  salasana
-    Set Password Confirmation  salasana
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
     Click  button >> text=Register
     Get Title  ==  Welcome to Ohtu Application!
 
+Register With Password Containing Letters And Numbers
+    Set Username  mikko
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Click  button >> text=Register
+    Get Title  ==  Welcome to Ohtu Application!
+
+Register With Password Containing Letters And Special Characters
+    Set Username  mikko
+    Set Password  kalle#abc
+    Set Password Confirmation  kalle#abc
+    Click  button >> text=Register
+    Get Title  ==  Welcome to Ohtu Application!
+
+Register With Password Containing Only Lowercase Letters
+    Set Username  mikko
+    Set Password  kallekalle
+    Set Password Confirmation  kallekalle
+    Click  button >> text=Register
+    Register Should Fail With Message  Password must contain a non-letter character
+
+Register With Password Containing Only Uppercase And Lowercase Letters
+    Set Username  mikko
+    Set Password  KalleKalle
+    Set Password Confirmation  KalleKalle
+    Click  button >> text=Register
+    Register Should Fail With Message  Password must contain a non-letter character
+
+Register With Matching Password Confirmation
+    Set Username  mikko
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Click  button >> text=Register
+    Get Title  ==  Welcome to Ohtu Application!
+
+Register With Mismatching Password Confirmation
+    Set Username  mikko
+    Set Password  kalle123
+    Set Password Confirmation  kalle456
+    Click  button >> text=Register
+    Register Should Fail With Message  Passwords do not match
+
 Register With Too Short Username And Valid Password
     Set Username  mi
-    Set Password  salasana
-    Set Password Confirmation  salasana
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
     Click  button >> text=Register
     Register Should Fail With Message  Username must be at least 3 characters long
 
@@ -29,8 +71,8 @@ Register With Valid Username And Too Short Password
 
 Register With Username That Is Already In Use
     Set Username  kalle
-    Set Password  salasana
-    Set Password Confirmation  salasana
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
     Click  button >> text=Register
     Register Should Fail With Message  User with username kalle already exists
 
