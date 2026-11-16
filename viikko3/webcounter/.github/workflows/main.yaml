@@ -1,9 +1,5 @@
 name: CI
 
-env:
-  DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-  #DATABASE_URL: ${{secrets.DB_URL}}
-
 on:
   push:
     branches: [main]
@@ -14,25 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-
     steps:
       - uses: actions/checkout@v5
       - name: Install uv
         uses: astral-sh/setup-uv@v10.1.0
         with:
-          python-version: "3.14"
+          python-version: '3.14'
       - name: Install dependencies
         run: uv sync
       - name: Install Playwright browser
